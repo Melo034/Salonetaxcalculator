@@ -98,35 +98,35 @@ export function PAYECalculator() {
       {/* Header */}
       <div className="space-y-2">
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 bg-[#313B2F] rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#313B2F] rounded-xl flex items-center justify-center shrink-0">
             <Coins className="w-5 h-5 text-[#FBA002]" />
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-foreground">PAYE Tax Calculator</h2>
-            <p className="text-muted-foreground text-sm">Pay As You Earn • Monthly</p>
+          <div className="min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">PAYE Tax Calculator</h2>
+            <p className="text-muted-foreground text-xs sm:text-sm">Pay As You Earn • Monthly</p>
           </div>
         </div>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-muted-foreground text-xs sm:text-sm">
           Based on the <strong>Income Tax Act 2000</strong> and <strong>Finance Acts 2024/2025</strong>.
         </p>
       </div>
 
       {/* Residency Toggle */}
-      <div className="bg-[#FBA002]/10 border border-[#FBA002]/30 rounded-xl p-4">
-        <div className="flex items-start gap-3">
-          <FileText className="w-5 h-5 text-[#FBA002] mt-0.5" />
-          <div className="flex-1">
-            <div className="font-semibold text-foreground mb-2">Tax Residency Status</div>
-            <div className="flex flex-wrap gap-3">
-              <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded-lg border-2 transition-all text-sm ${isResident ? 'border-[#313B2F] bg-[#313B2F] text-white' : 'border-[#e5e7e4] hover:border-[#c8cdc6]'
+      <div className="bg-[#FBA002]/10 border border-[#FBA002]/30 rounded-xl p-3 sm:p-4">
+        <div className="flex items-start gap-2 sm:gap-3">
+          <FileText className="w-5 h-5 text-[#FBA002] mt-0.5 shrink-0" />
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-foreground mb-2 text-sm sm:text-base">Tax Residency Status</div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <label className={`flex items-center justify-center gap-2 cursor-pointer px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${isResident ? 'border-[#313B2F] bg-[#313B2F] text-white' : 'border-[#e5e7e4] hover:border-[#c8cdc6]'
                 }`}>
                 <input type="radio" name="residency" checked={isResident} onChange={() => setIsResident(true)} className="sr-only" />
                 <span className="font-medium">Resident</span>
               </label>
-              <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded-lg border-2 transition-all text-sm ${!isResident ? 'border-[#313B2F] bg-[#313B2F] text-white' : 'border-[#e5e7e4] hover:border-[#c8cdc6]'
+              <label className={`flex items-center justify-center gap-2 cursor-pointer px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${!isResident ? 'border-[#313B2F] bg-[#313B2F] text-white' : 'border-[#e5e7e4] hover:border-[#c8cdc6]'
                 }`}>
                 <input type="radio" name="residency" checked={!isResident} onChange={() => setIsResident(false)} className="sr-only" />
-                <span className="font-medium">Non-Resident (Flat 25%)</span>
+                <span className="font-medium whitespace-nowrap">Non-Resident (Flat 25%)</span>
               </label>
             </div>
           </div>
@@ -136,23 +136,23 @@ export function PAYECalculator() {
       {/* Form */}
       <div className="space-y-4">
         {/* Basic Salary */}
-        <div className="bg-white rounded-xl border border-[#e5e7e4] p-4">
-          <label className="block text-sm font-semibold text-foreground mb-2">
+        <div className="bg-white rounded-xl border border-[#e5e7e4] p-3 sm:p-4">
+          <label className="block text-xs sm:text-sm font-semibold text-foreground mb-2">
             Basic Salary <span className="text-red-500">*</span>
           </label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">NLe</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs sm:text-sm">NLe</span>
             <Input
               type="number"
               placeholder="Enter monthly basic salary"
               value={basicSalary}
               onChange={(e) => setBasicSalary(e.target.value)}
-              className="pl-12 h-11 border-[#e5e7e4] focus:border-[#FBA002] rounded-lg"
+              className="pl-10 sm:pl-12 h-10 sm:h-11 border-[#e5e7e4] focus:border-[#FBA002] rounded-lg text-sm sm:text-base"
             />
           </div>
-          <p className="text-xs text-muted-foreground mt-1.5 flex items-center gap-1">
-            <HelpCircle className="w-3 h-3" />
-            NASSIT (5%) is deducted from basic salary only
+          <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 flex items-center gap-1">
+            <HelpCircle className="w-3 h-3 shrink-0" />
+            <span>NASSIT (5%) is deducted from basic salary only</span>
           </p>
         </div>
 
@@ -164,7 +164,7 @@ export function PAYECalculator() {
           onToggle={() => setShowAllowances(!showAllowances)}
           badge="Tax Relief"
         >
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <FormInput label="Rent Allowance" value={rentAllowance} onChange={setRentAllowance} />
             <FormInput label="Transport Allowance" value={transportAllowance} onChange={setTransportAllowance} />
             <FormInput label="Clothing Allowance" value={clothingAllowance} onChange={setClothingAllowance} />
@@ -181,7 +181,7 @@ export function PAYECalculator() {
           isOpen={showOtherIncome}
           onToggle={() => setShowOtherIncome(!showOtherIncome)}
         >
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             <FormInput label="Overtime" value={overtime} onChange={setOvertime} />
             <FormInput label="Bonus" value={bonus} onChange={setBonus} />
             <FormInput label="Other Income" value={otherIncome} onChange={setOtherIncome} />
@@ -195,7 +195,7 @@ export function PAYECalculator() {
           isOpen={showDeductions}
           onToggle={() => setShowDeductions(!showDeductions)}
         >
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             <FormInput label="Advance Salary" value={advanceSalary} onChange={setAdvanceSalary} />
             <FormInput label="Office Loan" value={officeLoan} onChange={setOfficeLoan} />
             <FormInput label="Other Deductions" value={otherDeductions} onChange={setOtherDeductions} />
@@ -222,11 +222,11 @@ export function PAYECalculator() {
       {result && (
         <div className="space-y-4 animate-fade-in-up">
           {/* Main Results Card */}
-          <div className="bg-[#313B2F] rounded-xl p-5 text-white">
-            <div className="text-white/60 text-sm mb-1">Your Monthly Take Home Pay</div>
-            <div className="text-3xl font-bold mb-4 text-[#FBA002]">{formatNLe(result.takeHomePay)}</div>
+          <div className="bg-[#313B2F] rounded-xl p-4 sm:p-5 text-white">
+            <div className="text-white/60 text-xs sm:text-sm mb-1">Your Monthly Take Home Pay</div>
+            <div className="text-2xl sm:text-3xl font-bold mb-4 text-[#FBA002] warp-break-word">{formatNLe(result.takeHomePay)}</div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-3 border-t border-white/10">
+            <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/10">
               <ResultStat label="PAYE Tax" value={formatNLe(result.payeTax)} />
               <ResultStat label="NASSIT (5%)" value={formatNLe(result.nassitEmployee)} />
               <ResultStat label="Leave Tax" value={formatNLe(result.taxOnLeaveAllowance)} />
@@ -235,14 +235,14 @@ export function PAYECalculator() {
           </div>
 
           {/* Additional Info */}
-          <div className="grid md:grid-cols-2 gap-3">
-            <div className="bg-[#f8f9f7] border border-[#e5e7e4] rounded-lg p-4">
-              <div className="text-sm text-muted-foreground mb-1">Gross Income</div>
-              <div className="text-xl font-bold text-foreground">{formatNLe(result.grossIncome)}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="bg-[#f8f9f7] border border-[#e5e7e4] rounded-lg p-3 sm:p-4">
+              <div className="text-xs sm:text-sm text-muted-foreground mb-1">Gross Income</div>
+              <div className="text-lg sm:text-xl font-bold text-foreground warp-break-word">{formatNLe(result.grossIncome)}</div>
             </div>
-            <div className="bg-[#f8f9f7] border border-[#e5e7e4] rounded-lg p-4">
-              <div className="text-sm text-muted-foreground mb-1">Employer NASSIT (10%)</div>
-              <div className="text-xl font-bold text-foreground">{formatNLe(result.nassitEmployer)}</div>
+            <div className="bg-[#f8f9f7] border border-[#e5e7e4] rounded-lg p-3 sm:p-4">
+              <div className="text-xs sm:text-sm text-muted-foreground mb-1">Employer NASSIT (10%)</div>
+              <div className="text-lg sm:text-xl font-bold text-foreground warp-break-word">{formatNLe(result.nassitEmployer)}</div>
             </div>
           </div>
 
@@ -273,51 +273,53 @@ export function PAYECalculator() {
       )}
 
       {/* PAYE Tax Bands Reference */}
-      <div className="bg-white rounded-xl border border-[#e5e7e4] p-5">
-        <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
-          <FileText className="w-4 h-4 text-[#FBA002]" />
-          PAYE Tax Bands (Monthly)
+      <div className="bg-white rounded-xl border border-[#e5e7e4] p-3 sm:p-5">
+        <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 text-sm sm:text-base">
+          <FileText className="w-4 h-4 text-[#FBA002] shrink-0" />
+          <span>PAYE Tax Bands (Monthly)</span>
         </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-[#e5e7e4]">
-                <th className="px-3 py-2 text-left font-semibold text-muted-foreground">Income Band</th>
-                <th className="px-3 py-2 text-center font-semibold text-muted-foreground">Rate</th>
-                <th className="px-3 py-2 text-center font-semibold text-muted-foreground">Cumulative Tax</th>
-              </tr>
-            </thead>
-            <tbody>
-              {PAYE_BANDS.map((band, index) => (
-                <tr key={index} className="border-b border-[#f1f3f0]">
-                  <td className="px-3 py-2 text-foreground">{band.description}</td>
-                  <td className="px-3 py-2 text-center">
-                    <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${band.rate === 0 ? 'bg-green-100 text-green-700' :
-                        band.rate <= 20 ? 'bg-[#FBA002]/15 text-[#9a6600]' :
-                          'bg-red-100 text-red-700'
-                      }`}>
-                      {band.rate}%
-                    </span>
-                  </td>
-                  <td className="px-3 py-2 text-center text-muted-foreground">NLe {band.cumulative}</td>
+        <div className="overflow-x-auto -mx-3 sm:mx-0">
+          <div className="min-w-125 px-3 sm:px-0">
+            <table className="w-full text-xs sm:text-sm">
+              <thead>
+                <tr className="border-b border-[#e5e7e4]">
+                  <th className="px-2 sm:px-3 py-2 text-left font-semibold text-muted-foreground">Income Band</th>
+                  <th className="px-2 sm:px-3 py-2 text-center font-semibold text-muted-foreground">Rate</th>
+                  <th className="px-2 sm:px-3 py-2 text-center font-semibold text-muted-foreground">Cumulative Tax</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {PAYE_BANDS.map((band, index) => (
+                  <tr key={index} className="border-b border-[#f1f3f0]">
+                    <td className="px-2 sm:px-3 py-2 text-foreground">{band.description}</td>
+                    <td className="px-2 sm:px-3 py-2 text-center">
+                      <span className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold ${band.rate === 0 ? 'bg-green-100 text-green-700' :
+                          band.rate <= 20 ? 'bg-[#FBA002]/15 text-[#9a6600]' :
+                            'bg-red-100 text-red-700'
+                        }`}>
+                        {band.rate}%
+                      </span>
+                    </td>
+                    <td className="px-2 sm:px-3 py-2 text-center text-muted-foreground whitespace-nowrap">NLe {band.cumulative}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
-          <AlertTriangle className="w-3 h-3" />
-          Non-Resident Rate: Flat 25% on all income
+        <p className="text-[10px] sm:text-xs text-muted-foreground mt-3 flex items-center gap-1">
+          <AlertTriangle className="w-3 h-3 shrink-0" />
+          <span>Non-Resident Rate: Flat 25% on all income</span>
         </p>
       </div>
 
       {/* Know Your Rights */}
-      <div className="bg-[#FBA002]/10 border border-[#FBA002]/30 rounded-xl p-5">
-        <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
-          <AlertTriangle className="h-4 w-4 text-[#FBA002]" />
-          Know Your Rights - PAYE
+      <div className="bg-[#FBA002]/10 border border-[#FBA002]/30 rounded-xl p-3 sm:p-5">
+        <h3 className="font-bold text-foreground mb-3 flex items-center gap-2 text-sm sm:text-base">
+          <AlertTriangle className="h-4 w-4 text-[#FBA002] shrink-0" />
+          <span>Know Your Rights - PAYE</span>
         </h3>
-        <ul className="grid md:grid-cols-2 gap-2">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <RightItem text="NASSIT is deducted from Basic Salary ONLY" />
           <RightItem text="First NLe 500 of allowances is tax-free" />
           <RightItem text="Leave allowance is taxed at 25%" />
@@ -334,12 +336,12 @@ export function PAYECalculator() {
 function FormInput({ label, value, onChange, hint }: { label: string; value: string; onChange: (v: string) => void; hint?: string }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-foreground mb-1">{label}</label>
+      <label className="block text-xs sm:text-sm font-medium text-foreground mb-1">{label}</label>
       <div className="relative">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs">NLe</span>
-        <Input type="number" placeholder="0" value={value} onChange={(e) => onChange(e.target.value)} className="pl-10 h-10 border-[#e5e7e4] focus:border-[#FBA002] rounded-lg text-sm" />
+        <span className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-[10px] sm:text-xs">NLe</span>
+        <Input type="number" placeholder="0" value={value} onChange={(e) => onChange(e.target.value)} className="pl-8 sm:pl-10 h-9 sm:h-10 border-[#e5e7e4] focus:border-[#FBA002] rounded-lg text-xs sm:text-sm" />
       </div>
-      {hint && <p className="text-xs text-muted-foreground mt-1">{hint}</p>}
+      {hint && <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">{hint}</p>}
     </div>
   )
 }
@@ -347,17 +349,17 @@ function FormInput({ label, value, onChange, hint }: { label: string; value: str
 function CollapsibleSection({ title, subtitle, isOpen, onToggle, badge, children }: { title: string; subtitle: string; isOpen: boolean; onToggle: () => void; badge?: string; children: React.ReactNode }) {
   return (
     <div className="bg-white rounded-xl border border-[#e5e7e4] overflow-hidden">
-      <button onClick={onToggle} className="w-full flex items-center justify-between p-4 hover:bg-[#f8f9f7] transition-colors">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-foreground text-sm">{title}</span>
-          {badge && <span className="px-2 py-0.5 bg-[#FBA002]/15 text-[#9a6600] text-xs font-semibold rounded-full">{badge}</span>}
+      <button onClick={onToggle} className="w-full flex items-center justify-between p-3 sm:p-4 hover:bg-[#f8f9f7] transition-colors">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="font-semibold text-foreground text-xs sm:text-sm truncate">{title}</span>
+          {badge && <span className="px-1.5 sm:px-2 py-0.5 bg-[#FBA002]/15 text-[#9a6600] text-[10px] sm:text-xs font-semibold rounded-full shrink-0">{badge}</span>}
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-muted-foreground">{subtitle}</span>
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+          <span className="text-[10px] sm:text-xs text-muted-foreground hidden sm:inline">{subtitle}</span>
           {isOpen ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
         </div>
       </button>
-      {isOpen && <div className="px-4 pb-4 pt-0"><div className="pt-3 border-t border-[#f1f3f0]">{children}</div></div>}
+      {isOpen && <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-0"><div className="pt-3 border-t border-[#f1f3f0]">{children}</div></div>}
     </div>
   )
 }
@@ -365,8 +367,8 @@ function CollapsibleSection({ title, subtitle, isOpen, onToggle, badge, children
 function ResultStat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-white/50 text-xs mb-0.5">{label}</div>
-      <div className="text-white font-semibold text-sm">{value}</div>
+      <div className="text-white/50 text-[10px] sm:text-xs mb-0.5">{label}</div>
+      <div className="text-white font-semibold text-xs sm:text-sm warp-break-word">{value}</div>
     </div>
   )
 }
@@ -375,17 +377,17 @@ function BreakdownStep({ number, text }: { number: number; text: string }) {
   return (
     <div className="flex items-start gap-2">
       <div className="w-5 h-5 bg-[#FBA002]/20 rounded-full flex items-center justify-center shrink-0">
-        <span className="text-xs font-bold text-[#9a6600]">{number}</span>
+        <span className="text-[10px] sm:text-xs font-bold text-[#9a6600]">{number}</span>
       </div>
-      <span className="text-muted-foreground">{text}</span>
+      <span className="text-muted-foreground text-xs sm:text-sm warp-break-word">{text}</span>
     </div>
   )
 }
 
 function RightItem({ text }: { text: string }) {
   return (
-    <li className="flex items-start gap-2 text-sm text-muted-foreground">
-      <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-[#FBA002]" />
+    <li className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+      <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 mt-0.5 shrink-0 text-[#FBA002]" />
       <span>{text}</span>
     </li>
   )

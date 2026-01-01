@@ -200,11 +200,11 @@ export function TaxCalculatorPlatform() {
 
       {/* Calculator Content */}
       <div
-        className="flex-1 p-6 md:p-8 overflow-auto bg-[#FAF8F5] min-h-150"
+        className="flex-1 p-4 sm:p-6 md:p-8 overflow-auto bg-[#FAF8F5] min-h-125"
         role="tabpanel"
         id={`${activeCalculator}-panel`}
       >
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto w-full">
           {/* Calculator Components */}
           <div className="animate-fade-in">
             {activeCalculator === "paye" && <PAYECalculator />}
