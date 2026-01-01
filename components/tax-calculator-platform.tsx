@@ -92,7 +92,7 @@ export function TaxCalculatorPlatform() {
       <div className="lg:hidden p-4 bg-[#313B2F] border-b border-white/10">
         <label className="text-white/80 text-sm font-medium mb-2 block">Select Calculator</label>
         <Select value={activeCalculator} onValueChange={(value) => setActiveCalculator(value as CalculatorType)}>
-          <SelectTrigger className="w-full h-12 bg-white/10 border-white/20 text-white focus:ring-[#FBA002]">
+          <SelectTrigger className="w-full h-12 bg-[#FBA002] border-[#FBA002] text-[#313B2F] focus:ring-[#FBA002] font-semibold">
             <div className="flex items-center gap-2">
               {navItems.find(n => n.id === activeCalculator)?.icon}
               <SelectValue placeholder="Select calculator" />
